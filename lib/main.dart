@@ -5,7 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:movies_app/src/core/di/dependency_injection.dart';
 import 'package:movies_app/src/core/riverpod.dart';
-import 'package:movies_app/src/core/theme/theme.dart';
+import 'package:movies_app/src/core/theme/theme_data.dart';
 import 'package:movies_app/src/router/router.dart';
 
 void main() async {
