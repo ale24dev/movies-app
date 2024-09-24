@@ -20,6 +20,8 @@ void main() async {
       child: MyApp(),
     ),
   );
+
+  setUpLogging();
 }
 
 /// Configures a logger for flutter and platform errors
