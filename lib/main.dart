@@ -46,11 +46,10 @@ class MyApp extends StatelessWidget {
 
   final theme = getIt.get<AppTheme>();
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Movie App',
       theme: theme.dark,
       home: const Scaffold(
         body: Center(child: Text('data')),
