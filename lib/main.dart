@@ -6,6 +6,7 @@ import 'package:logger/logger.dart';
 import 'package:movies_app/src/core/di/dependency_injection.dart';
 import 'package:movies_app/src/core/riverpod.dart';
 import 'package:movies_app/src/core/theme/theme.dart';
+import 'package:movies_app/src/router/router.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,6 +55,8 @@ class MyApp extends StatelessWidget {
       home: const Scaffold(
         body: Center(child: Text('data')),
       ),
+      initialRoute: AppRoute.home.name,
+      routes: routes,
     );
   }
 }
