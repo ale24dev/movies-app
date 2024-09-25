@@ -6,7 +6,7 @@ part of 'movie_controller.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$getPopularMoviesHash() => r'da26ff5d616af69d5f79197aa3ba1c577753a609';
+String _$getPopularMoviesHash() => r'b093ba747c084b25422147f154417749698d1949';
 
 /// See also [getPopularMovies].
 @ProviderFor(getPopularMovies)
@@ -22,12 +22,12 @@ final getPopularMoviesProvider =
 );
 
 typedef GetPopularMoviesRef = AutoDisposeFutureProviderRef<List<Movie>>;
-String _$getMoviesByGenreHash() => r'026311f1ed5a7a28512cc0088573e55b872c1fd6';
+String _$getMoviesByGenreHash() => r'4f4fb914c7e0b8db23398afce469a911421f8873';
 
 /// See also [getMoviesByGenre].
 @ProviderFor(getMoviesByGenre)
 final getMoviesByGenreProvider =
-    AutoDisposeFutureProvider<List<Movie>>.internal(
+    AutoDisposeFutureProvider<List<MovieSearchResult>>.internal(
   getMoviesByGenre,
   name: r'getMoviesByGenreProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -37,8 +37,9 @@ final getMoviesByGenreProvider =
   allTransitiveDependencies: null,
 );
 
-typedef GetMoviesByGenreRef = AutoDisposeFutureProviderRef<List<Movie>>;
-String _$getAllMoviesGenreHash() => r'89f5b98e33e29e91e3d44cde50a9b926625fcea1';
+typedef GetMoviesByGenreRef
+    = AutoDisposeFutureProviderRef<List<MovieSearchResult>>;
+String _$getAllMoviesGenreHash() => r'94da4ab5fdb99c64c79bf98c317cd6fe006f85df';
 
 /// See also [getAllMoviesGenre].
 @ProviderFor(getAllMoviesGenre)
