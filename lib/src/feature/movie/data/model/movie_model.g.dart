@@ -68,8 +68,7 @@ _$KnownForImpl _$$KnownForImplFromJson(Map<String, dynamic> json) =>
       posterPath: json['poster_path'] as String?,
       mediaType: $enumDecodeNullable(_$MediaTypeEnumMap, json['media_type']),
       adult: json['adult'] as bool?,
-      originalLanguage: $enumDecodeNullable(
-          _$OriginalLanguageEnumMap, json['original_language']),
+      originalLanguage: json['original_language'] as String?,
       genreIds: (json['genre_ids'] as List<dynamic>?)
           ?.map((e) => (e as num).toInt())
           .toList(),
@@ -100,7 +99,7 @@ Map<String, dynamic> _$$KnownForImplToJson(_$KnownForImpl instance) =>
       'poster_path': instance.posterPath,
       'media_type': _$MediaTypeEnumMap[instance.mediaType],
       'adult': instance.adult,
-      'original_language': _$OriginalLanguageEnumMap[instance.originalLanguage],
+      'original_language': instance.originalLanguage,
       'genre_ids': instance.genreIds,
       'popularity': instance.popularity,
       'release_date': instance.releaseDate?.toIso8601String(),
@@ -116,13 +115,4 @@ Map<String, dynamic> _$$KnownForImplToJson(_$KnownForImpl instance) =>
 const _$MediaTypeEnumMap = {
   MediaType.MOVIE: 'movie',
   MediaType.TV: 'tv',
-};
-
-const _$OriginalLanguageEnumMap = {
-  OriginalLanguage.EN: 'en',
-  OriginalLanguage.KO: 'ko',
-  OriginalLanguage.ML: 'ml',
-  OriginalLanguage.TA: 'ta',
-  OriginalLanguage.TL: 'tl',
-  OriginalLanguage.ZH: 'zh',
 };

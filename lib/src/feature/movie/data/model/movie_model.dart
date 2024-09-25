@@ -86,7 +86,7 @@ class KnownFor with _$KnownFor {
     @JsonKey(name: "poster_path") String? posterPath,
     @JsonKey(name: "media_type") MediaType? mediaType,
     @JsonKey(name: "adult") bool? adult,
-    @JsonKey(name: "original_language") OriginalLanguage? originalLanguage,
+    @JsonKey(name: "original_language") String? originalLanguage,
     @JsonKey(name: "genre_ids") List<int>? genreIds,
     @JsonKey(name: "popularity") double? popularity,
     @JsonKey(name: "release_date") DateTime? releaseDate,
@@ -112,30 +112,6 @@ enum MediaType {
 
 final mediaTypeValues =
     EnumValues({"movie": MediaType.MOVIE, "tv": MediaType.TV});
-
-enum OriginalLanguage {
-  @JsonValue("en")
-  EN,
-  @JsonValue("ko")
-  KO,
-  @JsonValue("ml")
-  ML,
-  @JsonValue("ta")
-  TA,
-  @JsonValue("tl")
-  TL,
-  @JsonValue("zh")
-  ZH
-}
-
-final originalLanguageValues = EnumValues({
-  "en": OriginalLanguage.EN,
-  "ko": OriginalLanguage.KO,
-  "ml": OriginalLanguage.ML,
-  "ta": OriginalLanguage.TA,
-  "tl": OriginalLanguage.TL,
-  "zh": OriginalLanguage.ZH
-});
 
 enum KnownForDepartment {
   @JsonValue("Acting")

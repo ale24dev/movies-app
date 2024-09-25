@@ -274,7 +274,7 @@ mixin _$KnownFor {
   @JsonKey(name: "adult")
   bool? get adult => throw _privateConstructorUsedError;
   @JsonKey(name: "original_language")
-  OriginalLanguage? get originalLanguage => throw _privateConstructorUsedError;
+  String? get originalLanguage => throw _privateConstructorUsedError;
   @JsonKey(name: "genre_ids")
   List<int>? get genreIds => throw _privateConstructorUsedError;
   @JsonKey(name: "popularity")
@@ -320,7 +320,7 @@ abstract class $KnownForCopyWith<$Res> {
       @JsonKey(name: "poster_path") String? posterPath,
       @JsonKey(name: "media_type") MediaType? mediaType,
       @JsonKey(name: "adult") bool? adult,
-      @JsonKey(name: "original_language") OriginalLanguage? originalLanguage,
+      @JsonKey(name: "original_language") String? originalLanguage,
       @JsonKey(name: "genre_ids") List<int>? genreIds,
       @JsonKey(name: "popularity") double? popularity,
       @JsonKey(name: "release_date") DateTime? releaseDate,
@@ -404,7 +404,7 @@ class _$KnownForCopyWithImpl<$Res, $Val extends KnownFor>
       originalLanguage: freezed == originalLanguage
           ? _value.originalLanguage
           : originalLanguage // ignore: cast_nullable_to_non_nullable
-              as OriginalLanguage?,
+              as String?,
       genreIds: freezed == genreIds
           ? _value.genreIds
           : genreIds // ignore: cast_nullable_to_non_nullable
@@ -466,7 +466,7 @@ abstract class _$$KnownForImplCopyWith<$Res>
       @JsonKey(name: "poster_path") String? posterPath,
       @JsonKey(name: "media_type") MediaType? mediaType,
       @JsonKey(name: "adult") bool? adult,
-      @JsonKey(name: "original_language") OriginalLanguage? originalLanguage,
+      @JsonKey(name: "original_language") String? originalLanguage,
       @JsonKey(name: "genre_ids") List<int>? genreIds,
       @JsonKey(name: "popularity") double? popularity,
       @JsonKey(name: "release_date") DateTime? releaseDate,
@@ -548,7 +548,7 @@ class __$$KnownForImplCopyWithImpl<$Res>
       originalLanguage: freezed == originalLanguage
           ? _value.originalLanguage
           : originalLanguage // ignore: cast_nullable_to_non_nullable
-              as OriginalLanguage?,
+              as String?,
       genreIds: freezed == genreIds
           ? _value._genreIds
           : genreIds // ignore: cast_nullable_to_non_nullable
@@ -648,7 +648,7 @@ class _$KnownForImpl implements _KnownFor {
   final bool? adult;
   @override
   @JsonKey(name: "original_language")
-  final OriginalLanguage? originalLanguage;
+  final String? originalLanguage;
   final List<int>? _genreIds;
   @override
   @JsonKey(name: "genre_ids")
@@ -790,8 +790,7 @@ abstract class _KnownFor implements KnownFor {
           @JsonKey(name: "poster_path") final String? posterPath,
           @JsonKey(name: "media_type") final MediaType? mediaType,
           @JsonKey(name: "adult") final bool? adult,
-          @JsonKey(name: "original_language")
-          final OriginalLanguage? originalLanguage,
+          @JsonKey(name: "original_language") final String? originalLanguage,
           @JsonKey(name: "genre_ids") final List<int>? genreIds,
           @JsonKey(name: "popularity") final double? popularity,
           @JsonKey(name: "release_date") final DateTime? releaseDate,
@@ -833,7 +832,7 @@ abstract class _KnownFor implements KnownFor {
   bool? get adult;
   @override
   @JsonKey(name: "original_language")
-  OriginalLanguage? get originalLanguage;
+  String? get originalLanguage;
   @override
   @JsonKey(name: "genre_ids")
   List<int>? get genreIds;
