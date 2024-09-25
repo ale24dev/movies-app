@@ -7,6 +7,10 @@ abstract class ApiUrl {
   static String popularMovies({String language = 'en-US', int pageIndex = 1}) =>
       '$BASE_URL/person/popular?&language=$language&page=$pageIndex';
 
+  static String getMovieDetailsById(
+          {String language = 'en-US', required int movieId}) =>
+      '$BASE_URL/movie/$movieId?language=$language';
+
   static String getMoviesByGenre(
           {String language = 'en-US', required int genre}) =>
       '$BASE_URL/discover/movie?with_genres=$genre&language=$language';

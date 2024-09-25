@@ -4,6 +4,7 @@ import 'package:injectable/injectable.dart';
 import 'package:movies_app/src/core/api/api_url.dart';
 import 'package:movies_app/src/core/domain/paginator/paginate_response.dart';
 import 'package:movies_app/src/feature/movie/data/model/genre_model.dart';
+import 'package:movies_app/src/feature/movie/data/model/movie_details.dart';
 import 'package:movies_app/src/feature/movie/data/model/movie_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:movies_app/src/feature/movie/data/model/movie_search_model.dart';
@@ -59,6 +60,26 @@ class MovieRepository {
       return (null, Exception('An error occurred'));
     }
   }
+
+  Future<(MovieDetails?, Exception?)> getMovieDetailsById(
+      {String language = 'en-US', required int movieId}) async {
+    final uri = Uri.parse(
+        ApiUrl.getMovieDetailsById(language: language, movieId: movieId));
+    try {
+      final resp = await http.get(uri, headers: _headers);
+
+      if (resp.statusCode != 200) {
+        return (null, Exception('An error occurred'));
+      }
+
+      final responseString = json.decode(resp.body);
+
+      return (MovieDetails.fromJson(responseString), null);
+    } catch (e) {
+      if (e is Exception) return (null, e);
+      return (null, Exception('An error occurred'));
+    }
+      }
 
   Future<(List<Genre>?, Exception?)> getAllMoviesGenre(
       {String language = 'en'}) async {
