@@ -6,11 +6,13 @@ class ErrorGenericWidget extends StatelessWidget {
   const ErrorGenericWidget({
     super.key,
     required this.onRetry,
+    this.goBack,
     this.errorMessage = 'An error occurred',
   });
 
   final String errorMessage;
   final Function() onRetry;
+  final Function()? goBack;
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +24,38 @@ class ErrorGenericWidget extends StatelessWidget {
         children: [
           Text(errorMessage),
           const GutterSmall(),
-          ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: colorScheme.secondaryContainer),
-              onPressed: () {
-                onRetry();
-              },
-              child: Text(
-                'Retry',
-                style:
-                    AppTextStyle().body.copyWith(color: colorScheme.onSurface),
-              ))
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              if (goBack != null) ...[
+                ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: colorScheme.primary),
+                    onPressed: () {
+                      goBack!();
+                    },
+                    child: Text(
+                      'Go back',
+                      style: AppTextStyle()
+                          .body
+                          .copyWith(color: Colors.white),
+                    )),
+                const Gutter()
+              ],
+              ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: colorScheme.secondaryContainer),
+                  onPressed: () {
+                    onRetry();
+                  },
+                  child: Text(
+                    'Retry',
+                    style: AppTextStyle()
+                        .body
+                        .copyWith(color: colorScheme.onSurface),
+                  )),
+            ],
+          )
         ],
       ),
     );

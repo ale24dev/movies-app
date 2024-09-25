@@ -25,6 +25,7 @@ class MovieDetailsScreen extends ConsumerWidget {
     return Scaffold(
       body: movieDetailsController.when(
           error: (error, stack) => ErrorGenericWidget(
+                goBack: Navigator.of(context).pop,
                 errorMessage: error.toString(),
                 onRetry: () =>
                     ref.refresh(getMovieDetailsByIdProvider(movieId)),
