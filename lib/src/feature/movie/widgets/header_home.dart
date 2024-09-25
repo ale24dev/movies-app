@@ -35,7 +35,7 @@ class HeaderHome extends StatelessWidget {
         const Spacer(),
         DecoratedBox(
           decoration: BoxDecoration(
-              color: colorScheme.onSurface.darken(80),
+              color: colorScheme.secondaryContainer,
               borderRadius: BorderRadius.circular(5.0)),
           child: const Padding(
             padding: EdgeInsets.all(8.0),

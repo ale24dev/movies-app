@@ -155,7 +155,7 @@ const FlexSchemeData _appFlexScheme = FlexSchemeData(
     primary: AppColor.primary,
     primaryContainer: AppColor.containerDark,
     secondary: AppColor.containerDark,
-    secondaryContainer: AppColor.secondary,
+    secondaryContainer: AppColor.containerDark,
   ),
 );
 
