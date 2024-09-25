@@ -28,7 +28,7 @@ class HeaderHome extends StatelessWidget {
             Text('Good Morning',
                 style: AppTextStyle().body.copyWith(
                     color: colorScheme.primary, fontWeight: FontWeight.bold)),
-            const Text('Movies Screen'),
+            const Text('Ale Díaz'),
           ],
         ),
         const Spacer(),
