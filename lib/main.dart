@@ -55,10 +55,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Movie App',
       theme: theme.dark,
-      home: const Scaffold(
-        body: Center(child: Text('data')),
-      ),
-      initialRoute: AppRoute.home.name,
+      initialRoute: AppRoute.splash.name,
       routes: routes,
     );
   }
