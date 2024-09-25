@@ -10,7 +10,7 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
-import 'package:movies_app/src/core/theme/theme_data.dart' as _i352;
+import 'package:movies_app/src/core/theme/theme_data.dart' as _i739;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -23,7 +23,7 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
-    gh.singleton<_i352.AppTheme>(() => _i352.AppTheme());
+    gh.singleton<_i739.AppTheme>(() => _i739.AppTheme());
     return this;
   }
 }
