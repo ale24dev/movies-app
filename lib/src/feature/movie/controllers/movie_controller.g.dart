@@ -39,8 +39,7 @@ final getMoviesByGenreProvider =
 
 typedef GetMoviesByGenreRef
     = AutoDisposeFutureProviderRef<List<MovieSearchResult>>;
-String _$getMovieDetailsByIdHash() =>
-    r'62b63b6d99cde129b9d41bf6ec71f057fea95e73';
+String _$getMoviesByNameHash() => r'cf1135e0738999d261bbcdddc28088e3b44c0bfe';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -62,6 +61,140 @@ class _SystemHash {
     return 0x1fffffff & (hash + ((0x00003fff & hash) << 15));
   }
 }
+
+/// See also [getMoviesByName].
+@ProviderFor(getMoviesByName)
+const getMoviesByNameProvider = GetMoviesByNameFamily();
+
+/// See also [getMoviesByName].
+class GetMoviesByNameFamily
+    extends Family<AsyncValue<List<MovieSearchResult>>> {
+  /// See also [getMoviesByName].
+  const GetMoviesByNameFamily();
+
+  /// See also [getMoviesByName].
+  GetMoviesByNameProvider call({
+    required String query,
+  }) {
+    return GetMoviesByNameProvider(
+      query: query,
+    );
+  }
+
+  @override
+  GetMoviesByNameProvider getProviderOverride(
+    covariant GetMoviesByNameProvider provider,
+  ) {
+    return call(
+      query: provider.query,
+    );
+  }
+
+  static const Iterable<ProviderOrFamily>? _dependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get dependencies => _dependencies;
+
+  static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
+
+  @override
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
+      _allTransitiveDependencies;
+
+  @override
+  String? get name => r'getMoviesByNameProvider';
+}
+
+/// See also [getMoviesByName].
+class GetMoviesByNameProvider
+    extends AutoDisposeFutureProvider<List<MovieSearchResult>> {
+  /// See also [getMoviesByName].
+  GetMoviesByNameProvider({
+    required String query,
+  }) : this._internal(
+          (ref) => getMoviesByName(
+            ref as GetMoviesByNameRef,
+            query: query,
+          ),
+          from: getMoviesByNameProvider,
+          name: r'getMoviesByNameProvider',
+          debugGetCreateSourceHash:
+              const bool.fromEnvironment('dart.vm.product')
+                  ? null
+                  : _$getMoviesByNameHash,
+          dependencies: GetMoviesByNameFamily._dependencies,
+          allTransitiveDependencies:
+              GetMoviesByNameFamily._allTransitiveDependencies,
+          query: query,
+        );
+
+  GetMoviesByNameProvider._internal(
+    super._createNotifier, {
+    required super.name,
+    required super.dependencies,
+    required super.allTransitiveDependencies,
+    required super.debugGetCreateSourceHash,
+    required super.from,
+    required this.query,
+  }) : super.internal();
+
+  final String query;
+
+  @override
+  Override overrideWith(
+    FutureOr<List<MovieSearchResult>> Function(GetMoviesByNameRef provider)
+        create,
+  ) {
+    return ProviderOverride(
+      origin: this,
+      override: GetMoviesByNameProvider._internal(
+        (ref) => create(ref as GetMoviesByNameRef),
+        from: from,
+        name: null,
+        dependencies: null,
+        allTransitiveDependencies: null,
+        debugGetCreateSourceHash: null,
+        query: query,
+      ),
+    );
+  }
+
+  @override
+  AutoDisposeFutureProviderElement<List<MovieSearchResult>> createElement() {
+    return _GetMoviesByNameProviderElement(this);
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return other is GetMoviesByNameProvider && other.query == query;
+  }
+
+  @override
+  int get hashCode {
+    var hash = _SystemHash.combine(0, runtimeType.hashCode);
+    hash = _SystemHash.combine(hash, query.hashCode);
+
+    return _SystemHash.finish(hash);
+  }
+}
+
+mixin GetMoviesByNameRef
+    on AutoDisposeFutureProviderRef<List<MovieSearchResult>> {
+  /// The parameter `query` of this provider.
+  String get query;
+}
+
+class _GetMoviesByNameProviderElement
+    extends AutoDisposeFutureProviderElement<List<MovieSearchResult>>
+    with GetMoviesByNameRef {
+  _GetMoviesByNameProviderElement(super.provider);
+
+  @override
+  String get query => (origin as GetMoviesByNameProvider).query;
+}
+
+String _$getMovieDetailsByIdHash() =>
+    r'62b63b6d99cde129b9d41bf6ec71f057fea95e73';
 
 /// See also [getMovieDetailsById].
 @ProviderFor(getMovieDetailsById)

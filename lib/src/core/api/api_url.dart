@@ -15,6 +15,13 @@ abstract class ApiUrl {
           {String language = 'en-US', required int genre}) =>
       '$BASE_URL/discover/movie?with_genres=$genre&language=$language';
 
+  static String getMoviesByName({
+    String language = 'en-US',
+    required String query,
+    int pageIndex = 1,
+  }) =>
+      '$BASE_URL/search/movie?query=$query&language=$language&page=$pageIndex';
+
   static String genreList({String language = 'en'}) =>
       '$BASE_URL/genre/movie/list?language=$language';
 }
