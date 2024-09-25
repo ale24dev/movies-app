@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movies_app/src/feature/movie/movies_screen.dart';
+import 'package:movies_app/src/feature/home/home_screen.dart';
 
 enum AppRoute {
   home,

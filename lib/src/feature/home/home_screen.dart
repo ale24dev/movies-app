@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gutter/flutter_gutter.dart';
 import 'package:movies_app/src/core/constants.dart';
-import 'package:movies_app/src/feature/movie/widgets/header_home.dart';
-import 'package:movies_app/src/feature/movie/widgets/movie_announcement.dart';
-import 'package:movies_app/src/feature/movie/widgets/movies_section.dart';
+import 'package:movies_app/src/feature/home/widgets/header_home.dart';
+import 'package:movies_app/src/feature/home/widgets/movie_announcement.dart';
+import 'package:movies_app/src/feature/home/widgets/movies_section.dart';
 
 class MoviesScreen extends StatelessWidget {
   const MoviesScreen({super.key});
