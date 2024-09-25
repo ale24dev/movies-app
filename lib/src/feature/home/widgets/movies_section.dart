@@ -11,11 +11,20 @@ class MoviesSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children:  [
         SearchField(),
         Gutter(),
-        MoviesRail(),
+        Expanded(
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                MoviesRail(sectionTitle: 'Movie genres'),
+                Gutter(),
+                MoviesRail(sectionTitle: 'Popular', showGenres: false),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }

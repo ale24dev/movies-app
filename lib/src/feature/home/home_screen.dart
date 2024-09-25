@@ -21,7 +21,7 @@ class HomeScreen extends StatelessWidget {
               GutterLarge(),
               MovieAnnouncement(),
               GutterLarge(),
-              MoviesSection()
+              Expanded(child: MoviesSection())
             ],
           ),
         ),

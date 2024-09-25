@@ -7,20 +7,22 @@ import 'package:movies_app/src/feature/movie/controllers/movie_controller.dart';
 import 'package:movies_app/src/feature/movie/widgets/movie_card.dart';
 
 class MoviesRail extends StatelessWidget {
-  const MoviesRail({super.key, this.showGenres = true});
+  const MoviesRail(
+      {super.key, this.showGenres = true, required this.sectionTitle});
 
   final bool showGenres;
+  final String sectionTitle;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Text(
+          sectionTitle,
+          style: AppTextStyle().label,
+        ),
         if (showGenres) ...[
-          Text(
-            'Movie genres',
-            style: AppTextStyle().label,
-          ),
           const GutterSmall(),
           const _MoviesCategory(),
         ],
