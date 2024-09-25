@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movies_app/src/core/constants.dart';
-import 'package:movies_app/src/feature/movie/data/model/movie_model.dart';
-import 'package:movies_app/src/feature/movie/movie_utils.dart';
 import 'package:movies_app/src/router/router.dart';
 
 class MovieCard extends StatelessWidget {
-  const MovieCard({super.key, required this.movie});
+  const MovieCard({super.key, this.name, this.image});
 
-  final Movie movie;
+  final String? name;
+
+  final String? image;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class MovieCard extends StatelessWidget {
                 fit: BoxFit.cover,
                 height: 200,
                 width: 100,
-                imageUrl: movie.imageBanner ?? Constants.noImageAvailable,
+                imageUrl: image ?? Constants.noImageAvailable,
               ),
             ),
           ),
@@ -52,7 +52,8 @@ class MovieCard extends StatelessWidget {
           left: 10,
           right: 10,
           child: Text(
-            movie.knownFor?.first.title ?? '',
+            name ?? '',
+            // movie.knownFor?.first.title ?? '',
             style: const TextStyle(
               color: Colors.white,
               fontSize: 10,
