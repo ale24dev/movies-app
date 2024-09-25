@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:movies_app/src/core/di/dependency_injection.dart';
@@ -8,8 +9,10 @@ import 'package:movies_app/src/core/riverpod.dart';
 import 'package:movies_app/src/core/theme/theme_data.dart';
 import 'package:movies_app/src/router/router.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await dotenv.load(fileName: ".env");
 
   configureDependencies();
 
