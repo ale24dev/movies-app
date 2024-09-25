@@ -5,7 +5,11 @@ abstract class ApiUrl {
   static const String BASE_URL_IMAGE = 'http://image.tmdb.org/t/p/w500/';
 
   static String popularMovies({String language = 'en-US', int pageIndex = 1}) =>
-      '$BASE_URL/person/popular?language=$language&page=$pageIndex';
+      '$BASE_URL/person/popular?&language=$language&page=$pageIndex';
+
+  static String getMoviesByGenre(
+          {String language = 'en-US', required int genre}) =>
+      '$BASE_URL/discover/movie?with_genres=$genre&language=$language';
 
   static String genreList({String language = 'en'}) =>
       '$BASE_URL/genre/movie/list?language=$language';
