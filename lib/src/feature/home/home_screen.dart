@@ -5,8 +5,8 @@ import 'package:movies_app/src/feature/home/widgets/header_home.dart';
 import 'package:movies_app/src/feature/home/widgets/movie_announcement.dart';
 import 'package:movies_app/src/feature/home/widgets/movies_section.dart';
 
-class MoviesScreen extends StatelessWidget {
-  const MoviesScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

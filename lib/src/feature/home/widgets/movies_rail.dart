@@ -1,23 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gutter/flutter_gutter.dart';
 import 'package:movies_app/src/core/theme/typography.dart';
+import 'package:movies_app/src/router/router.dart';
 
 class MoviesRail extends StatelessWidget {
-  const MoviesRail({
-    super.key,
-  });
+  const MoviesRail({super.key, this.showGenres = true});
+
+  final bool showGenres;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Movie genres',
-          style: AppTextStyle().label,
-        ),
-        const GutterSmall(),
-        const _MoviesCategory(),
+        if (showGenres) ...[
+          Text(
+            'Movie genres',
+            style: AppTextStyle().label,
+          ),
+          const GutterSmall(),
+          const _MoviesCategory(),
+        ],
         const Gutter(),
         SizedBox(
           height: 100,
@@ -25,17 +28,24 @@ class MoviesRail extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: 5,
               itemBuilder: (context, index) {
-                return Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                  height: 80,
-                  width: 70,
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
-                      borderRadius: BorderRadius.circular(5.0)),
-                );
+                return _movieCard(context);
               }),
         )
       ],
+    );
+  }
+
+  Widget _movieCard(BuildContext context) {
+    return InkWell(
+      onTap: () => Navigator.pushNamed(context, AppRoute.movieDetails.name),
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 5.0),
+        height: 80,
+        width: 70,
+        decoration: BoxDecoration(
+            color: Theme.of(context).colorScheme.primary,
+            borderRadius: BorderRadius.circular(5.0)),
+      ),
     );
   }
 }
@@ -61,8 +71,8 @@ class _MoviesCategoryState extends State<_MoviesCategory> {
               return _categoryCard(context, isSelected: index == indexSelected,
                   onSelected: (value) {
                 setState(() {
-                  indexSelected = listCategories
-                      .indexWhere((e) => e.toLowerCase().compareTo(value.toLowerCase()) == 0);
+                  indexSelected = listCategories.indexWhere((e) =>
+                      e.toLowerCase().compareTo(value.toLowerCase()) == 0);
                 });
               }, value: listCategories[index]);
             }));
