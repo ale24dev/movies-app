@@ -30,7 +30,7 @@ class MovieSearchResult implements MovieItem {
   final String? overview;
   final double? popularity;
   @JsonKey(name: "poster_path")
-  final String posterPath;
+  final String? posterPath;
   @JsonKey(name: "release_date")
   final DateTime? releaseDate;
   final String title;
@@ -49,7 +49,7 @@ class MovieSearchResult implements MovieItem {
     this.originalTitle,
     this.overview,
     this.popularity,
-    required this.posterPath,
+    this.posterPath,
     this.releaseDate,
     required this.title,
     this.video,
