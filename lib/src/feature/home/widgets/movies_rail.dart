@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gutter/flutter_gutter.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:movies_app/src/core/theme/typography.dart';
-import 'package:movies_app/src/router/router.dart';
+import 'package:movies_app/src/core/utils/widgets/loading_widget.dart';
+import 'package:movies_app/src/feature/movie/controllers/movie_controller.dart';
+import 'package:movies_app/src/feature/movie/widgets/movie_card.dart';
 
 class MoviesRail extends StatelessWidget {
   const MoviesRail({super.key, this.showGenres = true});
@@ -23,29 +26,24 @@ class MoviesRail extends StatelessWidget {
         ],
         const Gutter(),
         SizedBox(
-          height: 100,
-          child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return _movieCard(context);
-              }),
+          height: 150,
+          width: double.infinity,
+          child: Consumer(
+            builder: (context, ref, child) {
+              final movies = ref.watch(getPopularMoviesProvider);
+              return movies.when(
+                  data: (movies) => ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 5,
+                      itemBuilder: (context, index) {
+                        return MovieCard(movie: movies[index]);
+                      }),
+                  loading: () => const Center(child: LoadingWidget()),
+                  error: (error, stackTrace) => Text('Error: $error'));
+            },
+          ),
         )
       ],
-    );
-  }
-
-  Widget _movieCard(BuildContext context) {
-    return InkWell(
-      onTap: () => Navigator.pushNamed(context, AppRoute.movieDetails.name),
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-        height: 80,
-        width: 70,
-        decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.primary,
-            borderRadius: BorderRadius.circular(5.0)),
-      ),
     );
   }
 }
