@@ -1,4 +1,4 @@
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movies_app/src/core/constants.dart';
 
@@ -6,9 +6,12 @@ class HeaderMovie extends StatelessWidget {
   const HeaderMovie({
     super.key,
     required this.height,
+    required this.imageUrl,
   });
 
   final double height;
+
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,11 @@ class HeaderMovie extends StatelessWidget {
               color: Theme.of(context).colorScheme.primary,
               borderRadius:
                   const BorderRadius.vertical(bottom: Radius.circular(20))),
-          child: const Center(child: Text('...')),
+          child: CachedNetworkImage(
+            imageUrl: imageUrl,
+            height: height,
+            fit: BoxFit.cover,
+          ),
         ),
         Positioned(
             child: SafeArea(

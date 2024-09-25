@@ -72,8 +72,10 @@ class MoviesRail<T> extends StatelessWidget {
                           itemCount: 5,
                           itemBuilder: (context, index) {
                             return MovieCard(
-                                name: movies[index].getName(),
-                                image: MovieUtils.getImage(movies[index]));
+                              name: movies[index].getName(),
+                              image: MovieUtils.getImage(movies[index].getImage()),
+                              movieId: movies[index].getId(),
+                            );
                           }),
                   loading: () => const Center(child: LoadingWidget()),
                   error: (error, stackTrace) => Text('Error: $error'));
