@@ -1,5 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:movies_app/src/core/constants.dart';
 import 'package:movies_app/src/feature/movie/data/model/movie_model.dart';
 import 'package:movies_app/src/feature/movie/movie_utils.dart';
@@ -12,23 +12,56 @@ class MovieCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => Navigator.pushNamed(context, AppRoute.movieDetails.name),
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10.0),
-        ),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(10.0),
-          child: CachedNetworkImage(
-            fit: BoxFit.cover,
-            height: 130,
-            width: 100,
-            imageUrl: movie.imageBanner ?? Constants.noImageAvailable,
+    return Stack(
+      children: [
+        InkWell(
+          onTap: () => Navigator.pushNamed(context, AppRoute.movieDetails.name),
+          child: Container(
+            margin: const EdgeInsets.symmetric(horizontal: 5.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10.0),
+              child: CachedNetworkImage(
+                fit: BoxFit.cover,
+                height: 200,
+                width: 100,
+                imageUrl: movie.imageBanner ?? Constants.noImageAvailable,
+              ),
+            ),
           ),
         ),
-      ),
+        Positioned.fill(
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              gradient: const LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Color.fromARGB(0, 0, 0, 0),
+                  Color.fromARGB(255, 10, 0, 0),
+                ],
+              ),
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: 10,
+          left: 10,
+          right: 10,
+          child: Text(
+            movie.knownFor?.first.title ?? '',
+            style: const TextStyle(
+              color: Colors.white,
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+            ),
+            overflow: TextOverflow.ellipsis,
+          ),
+        ),
+      ],
     );
   }
 }
