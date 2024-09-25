@@ -8,6 +8,8 @@ import 'package:meta/meta.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'dart:convert';
 
+import 'package:movies_app/src/feature/movie/domain/movie_item.dart';
+
 part 'movie_model.freezed.dart';
 part 'movie_model.g.dart';
 
@@ -29,22 +31,45 @@ class MoviePaginator with _$MoviePaginator {
       _$MoviePaginatorFromJson(json);
 }
 
-@freezed
-class Movie with _$Movie {
-  const factory Movie({
-    @JsonKey(name: "adult") required bool adult,
-    @JsonKey(name: "gender") required int gender,
-    @JsonKey(name: "id") required int id,
-    @JsonKey(name: "known_for_department")
-    KnownForDepartment? knownForDepartment,
-    @JsonKey(name: "name") required String name,
-    @JsonKey(name: "original_name") required String originalName,
-    @JsonKey(name: "popularity") required double popularity,
-    @JsonKey(name: "profile_path") required String profilePath,
-    @JsonKey(name: "known_for") List<KnownFor>? knownFor,
-  }) = _Movie;
+@JsonSerializable(explicitToJson: true)
+class Movie implements MovieItem {
+  final bool adult;
+  final int gender;
+  final int id;
+  @JsonKey(name: "known_for_department")
+  final KnownForDepartment? knownForDepartment;
+  final String name;
+  @JsonKey(name: "original_name")
+  final String originalName;
+  final double popularity;
+  @JsonKey(name: "profile_path")
+  final String profilePath;
+  @JsonKey(name: "known_for")
+  final List<KnownFor>? knownFor;
 
+  const Movie({
+    required this.adult,
+    required this.gender,
+    required this.id,
+    this.knownForDepartment,
+    required this.name,
+    required this.originalName,
+    required this.popularity,
+    required this.profilePath,
+    this.knownFor,
+  });
+
+  // Método para deserializar el JSON en un objeto Movie
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
+
+  // Método para serializar el objeto Movie a JSON
+  Map<String, dynamic> toJson() => _$MovieToJson(this);
+
+  @override
+  String? getImage() => knownFor?.first.posterPath ?? '';
+
+  @override
+  String getName() => name;
 }
 
 @freezed

@@ -6,6 +6,39 @@ part of 'movie_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
+Movie _$MovieFromJson(Map<String, dynamic> json) => Movie(
+      adult: json['adult'] as bool,
+      gender: (json['gender'] as num).toInt(),
+      id: (json['id'] as num).toInt(),
+      knownForDepartment: $enumDecodeNullable(
+          _$KnownForDepartmentEnumMap, json['known_for_department']),
+      name: json['name'] as String,
+      originalName: json['original_name'] as String,
+      popularity: (json['popularity'] as num).toDouble(),
+      profilePath: json['profile_path'] as String,
+      knownFor: (json['known_for'] as List<dynamic>?)
+          ?.map((e) => KnownFor.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$MovieToJson(Movie instance) => <String, dynamic>{
+      'adult': instance.adult,
+      'gender': instance.gender,
+      'id': instance.id,
+      'known_for_department':
+          _$KnownForDepartmentEnumMap[instance.knownForDepartment],
+      'name': instance.name,
+      'original_name': instance.originalName,
+      'popularity': instance.popularity,
+      'profile_path': instance.profilePath,
+      'known_for': instance.knownFor?.map((e) => e.toJson()).toList(),
+    };
+
+const _$KnownForDepartmentEnumMap = {
+  KnownForDepartment.ACTING: 'Acting',
+  KnownForDepartment.CAMERA: 'Camera',
+};
+
 _$MoviePaginatorImpl _$$MoviePaginatorImplFromJson(Map<String, dynamic> json) =>
     _$MoviePaginatorImpl(
       page: (json['page'] as num).toInt(),
@@ -24,40 +57,6 @@ Map<String, dynamic> _$$MoviePaginatorImplToJson(
       'total_pages': instance.totalPages,
       'total_results': instance.totalResults,
     };
-
-_$MovieImpl _$$MovieImplFromJson(Map<String, dynamic> json) => _$MovieImpl(
-      adult: json['adult'] as bool,
-      gender: (json['gender'] as num).toInt(),
-      id: (json['id'] as num).toInt(),
-      knownForDepartment: $enumDecodeNullable(
-          _$KnownForDepartmentEnumMap, json['known_for_department']),
-      name: json['name'] as String,
-      originalName: json['original_name'] as String,
-      popularity: (json['popularity'] as num).toDouble(),
-      profilePath: json['profile_path'] as String,
-      knownFor: (json['known_for'] as List<dynamic>?)
-          ?.map((e) => KnownFor.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$$MovieImplToJson(_$MovieImpl instance) =>
-    <String, dynamic>{
-      'adult': instance.adult,
-      'gender': instance.gender,
-      'id': instance.id,
-      'known_for_department':
-          _$KnownForDepartmentEnumMap[instance.knownForDepartment],
-      'name': instance.name,
-      'original_name': instance.originalName,
-      'popularity': instance.popularity,
-      'profile_path': instance.profilePath,
-      'known_for': instance.knownFor,
-    };
-
-const _$KnownForDepartmentEnumMap = {
-  KnownForDepartment.ACTING: 'Acting',
-  KnownForDepartment.CAMERA: 'Camera',
-};
 
 _$KnownForImpl _$$KnownForImplFromJson(Map<String, dynamic> json) =>
     _$KnownForImpl(
