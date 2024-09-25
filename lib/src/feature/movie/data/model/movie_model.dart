@@ -66,6 +66,9 @@ class Movie implements MovieItem {
   Map<String, dynamic> toJson() => _$MovieToJson(this);
 
   @override
+  int getId() => id;
+
+  @override
   String? getImage() => knownFor?.first.posterPath ?? '';
 
   @override
