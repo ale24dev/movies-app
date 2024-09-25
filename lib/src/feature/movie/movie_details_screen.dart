@@ -61,7 +61,7 @@ class MovieDetailsScreen extends StatelessWidget {
                         .copyWith(color: colorScheme.onSurface.withOpacity(.7)),
                   ),
                   const Gutter(),
-                  const MoviesRail(sectionTitle: 'Similar', showGenres: false),
+                  // MoviesRail.similar(ref.w),
                 ],
               ),
             )
