@@ -6,5 +6,5 @@ abstract class Constants {
       EdgeInsets.symmetric(horizontal: 20);
 
   static const noImageAvailable =
-      'https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg';
+      'https://placehold.co/600x400/png';
 }

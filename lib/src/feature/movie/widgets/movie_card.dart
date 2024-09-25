@@ -59,7 +59,6 @@ class MovieCard extends StatelessWidget {
             right: 10,
             child: Text(
               name ?? '',
-              // movie.knownFor?.first.title ?? '',
               style: const TextStyle(
                 color: Colors.white,
                 fontSize: 10,

@@ -18,7 +18,7 @@ MovieSearchResult _$MovieSearchResultFromJson(Map<String, dynamic> json) =>
       originalTitle: json['original_title'] as String?,
       overview: json['overview'] as String?,
       popularity: (json['popularity'] as num?)?.toDouble(),
-      posterPath: json['poster_path'] as String,
+      posterPath: json['poster_path'] as String?,
       releaseDate: json['release_date'] == null
           ? null
           : DateTime.parse(json['release_date'] as String),
