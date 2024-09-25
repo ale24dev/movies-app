@@ -11,5 +11,5 @@ enum AppRoute {
 final routes = {
   AppRoute.splash.name: (context) => const SplashScreen(),
   AppRoute.home.name: (context) => const HomeScreen(),
-  AppRoute.movieDetails.name: (context) => const MovieDetailsScreen(),
+  // AppRoute.movieDetails.name: (context) => MovieDetailsScreen(movieId: movieId),
 };
