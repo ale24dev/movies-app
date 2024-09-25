@@ -20,7 +20,7 @@ String moviePaginatorToJson(MoviePaginator data) => json.encode(data.toJson());
 class MoviePaginator with _$MoviePaginator {
   const factory MoviePaginator({
     @JsonKey(name: "page") required int page,
-    @JsonKey(name: "movies") required List<Movie> movies,
+    @JsonKey(name: "results") required List<Movie> movies,
     @JsonKey(name: "total_pages") required int totalPages,
     @JsonKey(name: "total_results") required int totalResults,
   }) = _MoviePaginator;
@@ -36,12 +36,12 @@ class Movie with _$Movie {
     @JsonKey(name: "gender") required int gender,
     @JsonKey(name: "id") required int id,
     @JsonKey(name: "known_for_department")
-    required KnownForDepartment knownForDepartment,
+    KnownForDepartment? knownForDepartment,
     @JsonKey(name: "name") required String name,
     @JsonKey(name: "original_name") required String originalName,
     @JsonKey(name: "popularity") required double popularity,
     @JsonKey(name: "profile_path") required String profilePath,
-    @JsonKey(name: "known_for") required List<KnownFor> knownFor,
+    @JsonKey(name: "known_for") List<KnownFor>? knownFor,
   }) = _Movie;
 
   factory Movie.fromJson(Map<String, dynamic> json) => _$MovieFromJson(json);
@@ -50,26 +50,25 @@ class Movie with _$Movie {
 @freezed
 class KnownFor with _$KnownFor {
   const factory KnownFor({
-    @JsonKey(name: "backdrop_path") required String backdropPath,
-    @JsonKey(name: "id") required int id,
-    @JsonKey(name: "title") required String title,
-    @JsonKey(name: "original_title") required String originalTitle,
-    @JsonKey(name: "overview") required String overview,
-    @JsonKey(name: "poster_path") required String posterPath,
-    @JsonKey(name: "media_type") required MediaType mediaType,
-    @JsonKey(name: "adult") required bool adult,
-    @JsonKey(name: "original_language")
-    required OriginalLanguage originalLanguage,
-    @JsonKey(name: "genre_ids") required List<int> genreIds,
-    @JsonKey(name: "popularity") required double popularity,
-    @JsonKey(name: "release_date") required DateTime releaseDate,
-    @JsonKey(name: "video") required bool video,
-    @JsonKey(name: "vote_average") required double voteAverage,
-    @JsonKey(name: "vote_count") required int voteCount,
-    @JsonKey(name: "name") required String name,
-    @JsonKey(name: "original_name") required String originalName,
-    @JsonKey(name: "first_air_date") required DateTime firstAirDate,
-    @JsonKey(name: "origin_country") required List<String> originCountry,
+    @JsonKey(name: "backdrop_path") String? backdropPath,
+    @JsonKey(name: "id") int? id,
+    @JsonKey(name: "title") String? title,
+    @JsonKey(name: "original_title") String? originalTitle,
+    @JsonKey(name: "overview") String? overview,
+    @JsonKey(name: "poster_path") String? posterPath,
+    @JsonKey(name: "media_type") MediaType? mediaType,
+    @JsonKey(name: "adult") bool? adult,
+    @JsonKey(name: "original_language") OriginalLanguage? originalLanguage,
+    @JsonKey(name: "genre_ids") List<int>? genreIds,
+    @JsonKey(name: "popularity") double? popularity,
+    @JsonKey(name: "release_date") DateTime? releaseDate,
+    @JsonKey(name: "video") bool? video,
+    @JsonKey(name: "vote_average") double? voteAverage,
+    @JsonKey(name: "vote_count") int? voteCount,
+    @JsonKey(name: "name") String? name,
+    @JsonKey(name: "original_name") String? originalName,
+    @JsonKey(name: "first_air_date") DateTime? firstAirDate,
+    @JsonKey(name: "origin_country") List<String>? originCountry,
   }) = _KnownFor;
 
   factory KnownFor.fromJson(Map<String, dynamic> json) =>
