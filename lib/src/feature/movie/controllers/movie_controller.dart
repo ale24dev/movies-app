@@ -12,6 +12,8 @@ part 'movie_controller.g.dart';
 
 @riverpod
 FutureOr<List<Movie>> getPopularMovies(GetPopularMoviesRef ref) async {
+  ref.cache(duration: const Duration(minutes: 1));
+
   final (movies, error) = await getIt.get<MovieRepository>().getPopularMovies();
 
   if (error != null) {
@@ -30,6 +32,7 @@ void selectGenre(dynamic ref, Genre newGenre) {
 @riverpod
 FutureOr<List<MovieSearchResult>> getMoviesByGenre(
     GetMoviesByGenreRef ref) async {
+  ref.cache(duration: const Duration(minutes: 1));
   final genre = ref.watch(_genreSelected);
   if (genre == null) return [];
 
