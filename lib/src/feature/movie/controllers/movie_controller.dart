@@ -3,6 +3,7 @@ import 'package:movies_app/main.dart';
 import 'package:movies_app/src/core/di/dependency_injection.dart';
 import 'package:movies_app/src/core/riverpod.dart';
 import 'package:movies_app/src/feature/movie/data/model/genre_model.dart';
+import 'package:movies_app/src/feature/movie/data/model/movie_details.dart';
 import 'package:movies_app/src/feature/movie/data/model/movie_model.dart';
 import 'package:movies_app/src/feature/movie/data/model/movie_search_model.dart';
 import 'package:movies_app/src/feature/movie/data/movie_repository.dart';
@@ -44,6 +45,19 @@ FutureOr<List<MovieSearchResult>> getMoviesByGenre(
   }
 
   return movies?.data ?? [];
+}
+
+@riverpod
+FutureOr<MovieDetails> getMovieDetailsById(
+    GetMovieDetailsByIdRef ref, int movieId) async {
+  final (movie, error) =
+      await getIt.get<MovieRepository>().getMovieDetailsById(movieId: movieId);
+
+  if (error != null || movie == null) {
+    throw error ?? Exception('Movie not found');
+  }
+
+  return movie;
 }
 
 @Riverpod(keepAlive: true)
