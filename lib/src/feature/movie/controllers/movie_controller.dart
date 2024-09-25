@@ -47,6 +47,27 @@ FutureOr<List<MovieSearchResult>> getMoviesByGenre(
   return movies?.data ?? [];
 }
 
+final searchQueryProvider = StateProvider<String?>((ref) => null);
+
+void addSearchQuery(WidgetRef ref, String query) {
+  ref.read(searchQueryProvider.notifier).state = query;
+}
+
+@riverpod
+FutureOr<List<MovieSearchResult>> getMoviesByName(GetMoviesByNameRef ref,
+    {required String query}) async {
+  ref.cache(duration: const Duration(minutes: 1));
+
+  final (movies, error) =
+      await getIt.get<MovieRepository>().getMoviesByName(query: query);
+
+  if (error != null) {
+    throw error;
+  }
+
+  return movies?.data ?? [];
+}
+
 @riverpod
 FutureOr<MovieDetails> getMovieDetailsById(
     GetMovieDetailsByIdRef ref, int movieId) async {

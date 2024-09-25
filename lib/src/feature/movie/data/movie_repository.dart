@@ -61,6 +61,29 @@ class MovieRepository {
     }
   }
 
+  Future<(PaginateResponse<MovieSearchResult>?, Exception?)> getMoviesByName(
+      {String language = 'en-US', required String query}) async {
+    final uri =
+        Uri.parse(ApiUrl.getMoviesByName(language: language, query: query));
+    try {
+      final resp = await http.get(uri, headers: _headers);
+
+      if (resp.statusCode != 200) {
+        return (null, Exception('An error occurred'));
+      }
+
+      final responseString = json.decode(resp.body);
+      final value = PaginateResponse<MovieSearchResult>.fromJson(
+        responseString,
+        (json) => MovieSearchResult.fromJson(json as Map<String, dynamic>),
+      );
+      return (value, null);
+    } catch (e) {
+      if (e is Exception) return (null, e);
+      return (null, Exception('An error occurred'));
+    }
+  }
+
   Future<(MovieDetails?, Exception?)> getMovieDetailsById(
       {String language = 'en-US', required int movieId}) async {
     final uri = Uri.parse(
@@ -79,7 +102,7 @@ class MovieRepository {
       if (e is Exception) return (null, e);
       return (null, Exception('An error occurred'));
     }
-      }
+  }
 
   Future<(List<Genre>?, Exception?)> getAllMoviesGenre(
       {String language = 'en'}) async {
